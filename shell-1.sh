@@ -1,6 +1,7 @@
 # 
 # Shell script to install Sun Java, MySQL Server, Ruby, Make, Curl, Git, ZLib, RVM 
 # on Ubuntu 12.04 LTS OS
+# Veewee guide Source: https://github.com/jedi4ever/veewee/blob/master/doc/installation.md
 #
 
 # Script below installs the Library for adding the Repositories to APT-GET Package
@@ -57,6 +58,34 @@ echo ""
 echo "Installing ZLib package on your system..."
 sudo apt-get install zlib1g zlib1g-dev
 echo "ZLib installation completed."
+echo ""
+
+# Script to get RVM Installer from github using CURL Package
+bash -s stable < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)
+source ~/.bash_profile
+
+# Script to install RVM Version 1.9.2 (Latest as of Nov 2012)
+echo "Installing RVM version 1.9.2 ..."
+rvm install 1.9.2
+echo "RVM 1.9.2 installation completed"
+echo ""
+
+# Script to clone the Veewee Package from GitHub Repository
+echo "Getting (Cloning) the veewee package from GitHub repository..."
+git clone https://github.com/jedi4ever/veewee.git
+echo "Clone of Veewee Package done."
+echo ""
+
+cd veewee
+
+# Script to install bundler package
+echo "Installing Gem bundler..."
+gem install bundler
+echo ""
+echo "Installing bundle on your system..."
+bundle install
+echo "Installation of bundle completed."
+cd ..
 echo ""
 
 # Script below install RVM (Ruby Version Manager) package
